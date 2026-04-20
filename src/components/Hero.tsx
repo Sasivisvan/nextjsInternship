@@ -29,7 +29,7 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-600 via-purple-500 to-blue-600 animate-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-100 via-purple-50 to-blue-100 dark:from-gray-950 dark:via-[#1a0a2e] dark:to-indigo-950 animate-gradient" />
 
       {/* Floating Orbs */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-float" />

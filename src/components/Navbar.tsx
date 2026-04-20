@@ -49,7 +49,11 @@ export default function Navbar() {
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-blue-500 text-white text-sm font-black">
               P
             </span>
-            <span className="bg-gradient-to-r from-accent to-blue-500 bg-clip-text text-transparent">
+            <span className={`font-bold transition-colors ${
+              scrolled
+                ? "bg-gradient-to-r from-accent to-blue-500 bg-clip-text text-transparent"
+                : "text-white"
+            }`}>
               Prisma Studio
             </span>
           </a>
@@ -60,7 +64,11 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all hover:after:w-full"
+                className={`relative text-sm font-medium transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-0 after:transition-all hover:after:w-full ${
+                  scrolled
+                    ? "text-muted-foreground hover:text-foreground after:bg-accent"
+                    : "text-white/80 hover:text-white after:bg-white"
+                }`}
               >
                 {link.label}
               </a>
@@ -70,12 +78,16 @@ export default function Navbar() {
             <button
               id="theme-toggle"
               onClick={toggleTheme}
-              className="relative flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card transition-all hover:bg-muted hover:scale-110"
+              className={`relative flex h-9 w-9 items-center justify-center rounded-full transition-all hover:scale-110 ${
+                scrolled
+                  ? "border border-border bg-card hover:bg-muted"
+                  : "border border-white/30 bg-white/10 hover:bg-white/20"
+              }`}
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
                 <svg
-                  className="h-[18px] w-[18px] text-foreground"
+                  className={`h-[18px] w-[18px] ${scrolled ? "text-foreground" : "text-white"}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -89,7 +101,7 @@ export default function Navbar() {
                 </svg>
               ) : (
                 <svg
-                  className="h-[18px] w-[18px] text-foreground"
+                  className={`h-[18px] w-[18px] ${scrolled ? "text-foreground" : "text-white"}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -109,15 +121,15 @@ export default function Navbar() {
           <div className="flex items-center gap-3 md:hidden">
             <button
               onClick={toggleTheme}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card"
+              className={`flex h-9 w-9 items-center justify-center rounded-full ${scrolled ? "border border-border bg-card" : "border border-white/30 bg-white/10"}`}
               aria-label="Toggle theme"
             >
               {theme === "light" ? (
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className={`h-4 w-4 ${scrolled ? "" : "text-white"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
                 </svg>
               ) : (
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className={`h-4 w-4 ${scrolled ? "" : "text-white"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
                 </svg>
               )}
@@ -125,15 +137,15 @@ export default function Navbar() {
             <button
               id="mobile-menu-toggle"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card"
+              className={`flex h-9 w-9 items-center justify-center rounded-lg ${scrolled ? "border border-border bg-card" : "border border-white/30 bg-white/10"}`}
               aria-label="Toggle mobile menu"
             >
               {mobileOpen ? (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className={`h-5 w-5 ${scrolled ? "" : "text-white"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className={`h-5 w-5 ${scrolled ? "" : "text-white"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
               )}
